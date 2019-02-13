@@ -16,3 +16,4 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
       - "./dump.sql:/docker-entrypoint-initdb.d/dump.sql"
+    command: --sql_mode=''
