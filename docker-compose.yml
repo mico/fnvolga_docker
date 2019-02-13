@@ -1,0 +1,23 @@
+version: '2'
+services:
+  php:
+    build: .
+    ports:
+      - "1080:80"
+    links:
+      - mysql:mysql
+    volumes:
+      - ./htdocs:/var/www/html
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:5
+    # ports:
+    #     - "3306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - "./dump.sql:/docker-entrypoint-initdb.d/dump.sql"
+    # command:
+    #   - echo 'create database fn_volga' | "${mysql[@]}"
+    #   - env mysql fn_volga < /dump.sql
