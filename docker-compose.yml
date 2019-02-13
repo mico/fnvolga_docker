@@ -12,12 +12,7 @@ services:
       - mysql
   mysql:
     image: mysql:5
-    # ports:
-    #     - "3306:3306"
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
       - "./dump.sql:/docker-entrypoint-initdb.d/dump.sql"
-    # command:
-    #   - echo 'create database fn_volga' | "${mysql[@]}"
-    #   - env mysql fn_volga < /dump.sql
